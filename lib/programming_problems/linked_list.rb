@@ -19,7 +19,7 @@ module ProgrammingProblems
     end
 
     def insert(data)
-      @head = LinkedListNode.new(data, head)
+      self.head = LinkedListNode.new(data, head)
     end
 
     def insert_sorted(data)
@@ -37,7 +37,7 @@ module ProgrammingProblems
     end
 
     def remove(target)
-      @head = head.next if head == target
+      self.head = head.next if head == target
       prev  = find { |item| item.next == target }
       prev.next = prev.next.next if prev
     end
