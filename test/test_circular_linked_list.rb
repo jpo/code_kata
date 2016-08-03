@@ -8,18 +8,26 @@ module ProgrammingProblems
         assert_equal 0, list.count
       end
 
+      it 'is circular' do
+        list = CircularLinkedList.new
+        list.insert('foo')
+        list.insert('bar')
+        assert_equal 'bar', list.head.data
+        assert_equal 'foo', list.head.next.data
+        assert_equal 'bar', list.head.next.next.data
+      end
+
       it 'inserts a node' do
         list = CircularLinkedList.new
         list.insert('node')
         assert_equal 1, list.count
-        assert_equal %w(node), list.map { |i| i.data }
+        assert_equal 'node', list.head.data
       end
 
       it 'finds a node by value' do
         list = CircularLinkedList.new
         list.insert('foo')
         list.insert('bar')
-
         result = list.find_value('foo')
         assert_equal 'foo', result.data
       end

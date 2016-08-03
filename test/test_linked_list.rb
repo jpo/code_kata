@@ -12,14 +12,13 @@ module ProgrammingProblems
         list = LinkedList.new
         list.insert('node')
         assert_equal 1, list.count
-        assert_equal %w(node), list.map { |i| i.data }
+        assert_equal 'node', list.head.data
       end
 
       it 'finds a node by value' do
         list = LinkedList.new
         list.insert('foo')
         list.insert('bar')
-
         result = list.find_value('foo')
         assert_equal 'foo', result.data
       end
@@ -28,7 +27,6 @@ module ProgrammingProblems
         list = LinkedList.new
         list.insert('foo')
         assert_equal 1, list.count
-
         target = list.find_value('foo')
         list.remove(target)
         assert_equal 0, list.count
