@@ -41,5 +41,26 @@ module ProgrammingProblems
       prev  = find { |item| item.next == target }
       prev.next = prev.next.next if prev
     end
+
+    # Find the midpoint in the list using a single scan.
+    #
+    # == Note
+    #
+    # This method works by moving two indices: index and trailing. As the list
+    # is scanned, 'index' is moved twice per iteration and 'trailing' is moved
+    # once per iteration. The result is that when 'index' reaches the end of
+    # the list, 'trailing' should be at the midpoint.
+    def mid
+      index    = self.head
+      trailing = self.head
+      while index
+        index = index.next
+        if index
+          index    = index.next
+          trailing = trailing.next
+        end
+      end
+      return trailing
+    end
   end
 end

@@ -31,6 +31,16 @@ module ProgrammingProblems
         list.remove(target)
         assert_equal 0, list.count
       end
+
+      it 'find the midpoint' do
+        list = LinkedList.new
+        list.insert(5)
+        list.insert(4)
+        list.insert(3)
+        list.insert(2)
+        list.insert(1)
+        assert_equal 3, list.mid.data
+      end
     end
   end
 end
