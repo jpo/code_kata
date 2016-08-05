@@ -15,10 +15,7 @@ module ProgrammingProblems
       end
     end
 
-    def find_value(value)
-      return find { |item| item.data == value }
-    end
-
+    # Inserts a node at the beginning of the list.
     def insert(data)
       if !self.head
         self.head = DoublyLinkedListNode.new(data)
@@ -31,6 +28,7 @@ module ProgrammingProblems
       self.head = node
     end
 
+    # Removes a given node from the list.
     def remove(target)
       if self.head == self.head.next
         self.head = nil
@@ -40,6 +38,12 @@ module ProgrammingProblems
         target.next.prev = target.prev
         self.head = self.head.next if self.head == target
       end
+    end
+
+    # Find and return the node in the list whose value is equal to the given
+    # value.
+    def find_value(value)
+      return find { |item| item.data == value }
     end
   end
 end

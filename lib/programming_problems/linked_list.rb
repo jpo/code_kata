@@ -14,42 +14,25 @@ module ProgrammingProblems
       end
     end
 
-    def find_value(value)
-      find { |item| item.data == value }
-    end
-
+    # Inserts a node at the beginning of the list.
     def insert(data)
       self.head = LinkedListNode.new(data, self.head)
     end
 
-    def insert_sorted(data)
-      if !self.head || data <= self.head.data
-        return insert(data)
-      end
-
-      current = self.head
-
-      while current.next && current.next.data < data
-        current = current.next
-      end
-
-      current.next = LinkedListNode.new(data, current.next)
-    end
-
+    # Removes a given node from the list.
     def remove(target)
       self.head = self.head.next if self.head == target
       prev  = find { |item| item.next == target }
       prev.next = prev.next.next if prev
     end
 
+    # Find and return the node in the list whose value is equal to the given
+    # value.
+    def find_value(value)
+      find { |item| item.data == value }
+    end
+
     # Find the midpoint in the list using a single scan.
-    #
-    # == Note
-    #
-    # This method works by moving two indices: index and trailing. As the list
-    # is scanned, 'index' is moved twice per iteration and 'trailing' is moved
-    # once per iteration. The result is that when 'index' reaches the end of
-    # the list, 'trailing' should be at the midpoint.
     def mid
       index    = self.head
       trailing = self.head
@@ -63,7 +46,7 @@ module ProgrammingProblems
       return trailing
     end
 
-    # Finds the node at position n from the end of the list
+    # Finds the node at position n from the end of the list.
     def nth_from_end(n)
       index    = self.head
       trailing = self.head

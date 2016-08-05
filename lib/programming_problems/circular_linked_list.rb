@@ -15,10 +15,7 @@ module ProgrammingProblems
       end
     end
 
-    def find_value(value)
-      return find { |item| item.data == value }
-    end
-
+    # Inserts a node at the beginning of the list.
     def insert(data)
       new_node = LinkedListNode.new(data)
       if !self.head
@@ -31,6 +28,7 @@ module ProgrammingProblems
       end
     end
 
+    # Removes a given node from the list.
     def remove(target)
       if !self.head || self.head == self.head.next
         self.head = nil
@@ -42,6 +40,12 @@ module ProgrammingProblems
       if self.head == next_node
         self.head = target
       end
+    end
+
+    # Find and return the node in the list whose value is equal to the given
+    # value.
+    def find_value(value)
+      return find { |item| item.data == value }
     end
   end
 end
