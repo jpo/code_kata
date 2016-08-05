@@ -62,5 +62,19 @@ module ProgrammingProblems
       end
       return trailing
     end
+
+    # Finds the node at position n from the end of the list
+    def nth_from_end(n)
+      index    = self.head
+      trailing = self.head
+      n.times do
+        index = index.next if index
+      end
+      while index && index.next
+        index    = index.next
+        trailing = trailing.next
+      end
+      return trailing
+    end
   end
 end

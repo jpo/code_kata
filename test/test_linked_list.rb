@@ -32,7 +32,7 @@ module ProgrammingProblems
         assert_equal 0, list.count
       end
 
-      it 'find the midpoint' do
+      it 'finds the midpoint' do
         list = LinkedList.new
         list.insert(5)
         list.insert(4)
@@ -40,6 +40,16 @@ module ProgrammingProblems
         list.insert(2)
         list.insert(1)
         assert_equal 3, list.mid.data
+      end
+
+      it 'finds the nth element from the end' do
+        list = LinkedList.new
+        5.downto(1).each do |n|
+          list.insert(n)
+        end
+        5.downto(1).each_with_index do |n,i|
+          assert_equal n, list.nth_from_end(i).data
+        end
       end
     end
   end
