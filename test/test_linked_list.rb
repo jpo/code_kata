@@ -10,35 +10,27 @@ module ProgrammingProblems
 
       it 'inserts a node' do
         list = LinkedList.new
-        list.insert('node')
+        list.insert(1)
         assert_equal 1, list.count
-        assert_equal 'node', list.head.data
-      end
-
-      it 'finds a node by value' do
-        list = LinkedList.new
-        list.insert('foo')
-        list.insert('bar')
-        result = list.find_value('foo')
-        assert_equal 'foo', result.data
+        assert_equal 1, list.head.data
       end
 
       it 'removes a node' do
         list = LinkedList.new
-        list.insert('foo')
-        assert_equal 1, list.count
-        target = list.find_value('foo')
-        list.remove(target)
-        assert_equal 0, list.count
+        (1..3).each { |i| list.insert(i) }
+        list.remove(list.find_value(3))
+        assert_equal [2,1], list.map { |item| item.data }
+      end
+
+      it 'finds a node by value' do
+        list = LinkedList.new
+        (1..3).each { |i| list.insert(i) }
+        assert_equal 2, list.find_value(2).data
       end
 
       it 'finds the midpoint' do
         list = LinkedList.new
-        list.insert(5)
-        list.insert(4)
-        list.insert(3)
-        list.insert(2)
-        list.insert(1)
+        1.upto(5).each { |n| list.insert(n) }
         assert_equal 3, list.mid.data
       end
 
