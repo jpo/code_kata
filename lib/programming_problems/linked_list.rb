@@ -7,7 +7,7 @@ module ProgrammingProblems
     attr_accessor :head
 
     def each
-      item = head
+      item = self.head
       while item
         yield item
         item = item.next
@@ -19,15 +19,15 @@ module ProgrammingProblems
     end
 
     def insert(data)
-      self.head = LinkedListNode.new(data, head)
+      self.head = LinkedListNode.new(data, self.head)
     end
 
     def insert_sorted(data)
-      if !head || data <= head.data
+      if !self.head || data <= self.head.data
         return insert(data)
       end
 
-      current = head
+      current = self.head
 
       while current.next && current.next.data < data
         current = current.next
@@ -37,7 +37,7 @@ module ProgrammingProblems
     end
 
     def remove(target)
-      self.head = head.next if head == target
+      self.head = self.head.next if self.head == target
       prev  = find { |item| item.next == target }
       prev.next = prev.next.next if prev
     end
