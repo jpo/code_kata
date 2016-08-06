@@ -48,7 +48,7 @@ module ProgrammingProblems
         list = LinkedList.new
         (1..5).each { |n| list.insert(n) }
         assert_equal [5,4,3,2,1], list.map(&:data)
-        list.reverse
+        list.reverse!
         assert_equal [1,2,3,4,5], list.map(&:data)
       end
     end

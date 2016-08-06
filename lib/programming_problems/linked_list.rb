@@ -60,8 +60,8 @@ module ProgrammingProblems
       return trailing
     end
 
-    # Reverse the items in the list
-    def reverse
+    # Reverse the items in the list in place
+    def reverse!
       prev = nil
       head = self.head
       while head

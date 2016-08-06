@@ -46,8 +46,8 @@ module ProgrammingProblems
       return find { |item| item.data == value }
     end
 
-    # Reverse the items in the list
-    def reverse
+    # Reverse the items in the list in place
+    def reverse!
       return if !self.head
       return if self.head.next == self.head
       tail = self.head
