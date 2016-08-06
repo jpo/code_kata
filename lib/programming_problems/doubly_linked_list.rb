@@ -45,5 +45,16 @@ module ProgrammingProblems
     def find_value(value)
       return find { |item| item.data == value }
     end
+
+    # Reverse the items in the list
+    def reverse
+      return if !self.head
+      return if self.head.next == self.head
+      tail = self.head
+      begin
+        tail.next, tail.prev, tail = tail.prev, tail.next, tail.next
+      end while tail != self.head
+      self.head = self.head.next
+    end
   end
 end
