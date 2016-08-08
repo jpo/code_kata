@@ -84,5 +84,19 @@ module ProgrammingProblems
       end
       return !list1 && !list2
     end
+
+    # Appends data from another list onto the end of the current list.
+    def merge!(other)
+      h1 = self.head
+      h2 = other.head
+      if !h1 || !h2
+        self.head = h1 ? h1 : h2
+        return
+      end
+      while h1.next
+        h1 = h1.next
+      end
+      h1.next = h2
+    end
   end
 end

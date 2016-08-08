@@ -63,6 +63,15 @@ module ProgrammingProblems
         assert list1.equals?(list2)
         assert !list1.equals?(list3)
       end
+
+      it 'merges another list with itself' do
+        list1 = LinkedList.new
+        (4..5).each { |n| list1.insert(n) }
+        list2 = LinkedList.new
+        (1..3).each { |n| list2.insert(n) }
+        list1.merge!(list2)
+        assert_equal [5,4,3,2,1], list1.map(&:data)
+      end
     end
   end
 end
