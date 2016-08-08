@@ -51,6 +51,18 @@ module ProgrammingProblems
         list.reverse!
         assert_equal [1,2,3,4,5], list.map(&:data)
       end
+
+      it 'compares another list with itself' do
+        list1 = LinkedList.new
+        list2 = LinkedList.new
+        list3 = LinkedList.new
+        (1..5).each do |n|
+          list1.insert(n)
+          list2.insert(n)
+        end
+        assert list1.equals?(list2)
+        assert !list1.equals?(list3)
+      end
     end
   end
 end
