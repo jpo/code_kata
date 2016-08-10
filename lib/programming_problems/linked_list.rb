@@ -98,5 +98,14 @@ module ProgrammingProblems
       end
       h1.next = h2
     end
+
+    # Indicates whether or not the items in the list are the same both forward
+    # and backward.
+    def palindrome?
+      stack = []
+      each { |item| stack.push(item) }
+      each { |item| return false if item.data != stack.pop.data }
+      return true
+    end
   end
 end

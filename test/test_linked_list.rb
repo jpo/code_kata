@@ -72,6 +72,15 @@ module ProgrammingProblems
         list1.merge!(list2)
         assert_equal [5,4,3,2,1], list1.map(&:data)
       end
+
+      it 'determines if the list is a palindrome' do
+        list1 = LinkedList.new
+        [1,2,1].each { |n| list1.insert(n) }
+        list2 = LinkedList.new
+        [1,2,3].each { |n| list2.insert(n) }
+        assert list1.palindrome?
+        assert !list2.palindrome?
+      end
     end
   end
 end
