@@ -56,5 +56,19 @@ module ProgrammingProblems
       end while tail != self.head
       self.head = self.head.next
     end
+
+    # Indicates whether or not the items in the list are the same both forward
+    # and backward.
+    def palindrome?
+      return true if !self.head || self.head = self.next
+      head = self.head
+      tail = self.head.prev
+      begin
+        return false if head.data != tail.data
+        head = head.next
+        tail = tail.next
+      end while head != tail && head != tail.next
+      return true
+    end
   end
 end

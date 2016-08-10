@@ -51,6 +51,15 @@ module ProgrammingProblems
         list.reverse!
         assert_equal [1,2,3,4,5], list.map(&:data)
       end
+
+      it 'determines if the list is a palindrome' do
+        list1 = LinkedList.new
+        [1,2,1].each { |n| list1.insert(n) }
+        list2 = LinkedList.new
+        [1,2,3].each { |n| list2.insert(n) }
+        assert list1.palindrome?
+        assert !list2.palindrome?
+      end
     end
   end
 end
