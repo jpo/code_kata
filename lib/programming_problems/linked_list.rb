@@ -107,5 +107,20 @@ module ProgrammingProblems
       each { |item| return false if item.data != stack.pop.data }
       return true
     end
+
+    # Indicates whether or not the list loops back on itself (i.e. the tail node
+    # links back to a previous node)
+    def looped?
+      return false if !self.head
+      leading  = self.head
+      trailing = self.head
+      while leading
+        leading = leading.next
+        return true if leading == trailing
+        trailing = trailing.next
+        leading  = leading.next if leading
+      end
+      return false
+    end
   end
 end

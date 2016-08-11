@@ -81,6 +81,14 @@ module ProgrammingProblems
         assert list1.palindrome?
         assert !list2.palindrome?
       end
+
+      it 'detects loops' do
+        list = LinkedList.new
+        (1..3).each { |n| list.insert(n) }
+        assert !list.looped?
+        list.head.next.next.next = list.head.next
+        assert list.looped?
+      end
     end
   end
 end
