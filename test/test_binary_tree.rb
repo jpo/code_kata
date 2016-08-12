@@ -25,6 +25,13 @@ module ProgrammingProblems
         assert_equal 4, tree.root.right.data
         assert_equal 5, tree.root.right.right.data
       end
+
+      it 'finds a node by value' do
+        tree = BinaryTree.new
+        (1..5).each { |n| tree.insert(n) }
+        assert_equal 3, tree.find_value(3).data
+        assert tree.find_value(0).nil?
+      end
     end
   end
 end
