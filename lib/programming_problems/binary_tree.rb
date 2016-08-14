@@ -16,6 +16,19 @@ module ProgrammingProblems
       return find_value_node(@root, val)
     end
 
+    def find_parent(target)
+      return nil if @root == target
+      node = @root
+      while (node.left != target && node.right != target)
+        if target.data < node.data
+          node = node.left
+        else
+          node = node.right
+        end
+      end
+      return node
+    end
+
     private
 
     def insert_node(node, val)

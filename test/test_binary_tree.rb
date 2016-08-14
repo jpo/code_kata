@@ -32,6 +32,14 @@ module ProgrammingProblems
         assert_equal 3, tree.find_value(3).data
         assert tree.find_value(0).nil?
       end
+
+      it 'finds the parent of a given node' do
+        tree = BinaryTree.new
+        (1..5).each { |n| tree.insert(n) }
+        child = tree.root.right
+        assert_equal 2, child.data
+        assert_equal 1, tree.find_parent(child).data
+      end
     end
   end
 end
