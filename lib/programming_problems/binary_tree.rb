@@ -29,6 +29,21 @@ module ProgrammingProblems
       return node
     end
 
+    def find_successor(target)
+      successor = target.right
+      if successor
+        while successor.left
+          successor = successor.left
+        end
+        return successor
+      end
+      begin
+        target    = successor if successor
+        successor = find_parent(target)
+      end while successor && successor.right == target
+      return successor
+    end
+
     private
 
     def insert_node(node, val)

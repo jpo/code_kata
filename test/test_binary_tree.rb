@@ -40,6 +40,14 @@ module ProgrammingProblems
         assert_equal 2, child.data
         assert_equal 1, tree.find_parent(child).data
       end
+
+      it 'finds the successor of a given node' do
+        tree = BinaryTree.new
+        (1..5).each { |n| tree.insert(n) }
+        parent = tree.root
+        assert_equal 1, parent.data
+        assert_equal 2, tree.find_successor(parent).data
+      end
     end
   end
 end
