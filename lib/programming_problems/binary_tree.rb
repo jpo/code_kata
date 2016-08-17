@@ -37,10 +37,11 @@ module ProgrammingProblems
         end
         return successor
       end
-      begin
+      loop do
         target    = successor if successor
         successor = find_parent(target)
-      end while successor && successor.right == target
+        break unless successor && successor.right == target
+      end
       return successor
     end
 

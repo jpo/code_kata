@@ -51,9 +51,10 @@ module ProgrammingProblems
       return if !self.head
       return if self.head.next == self.head
       tail = self.head
-      begin
+      loop do
         tail.next, tail.prev, tail = tail.prev, tail.next, tail.next
-      end while tail != self.head
+        break unless tail != self.head
+      end
       self.head = self.head.next
     end
 
@@ -63,11 +64,12 @@ module ProgrammingProblems
       return true if !self.head || self.head == self.next
       head = self.head
       tail = self.head.prev
-      begin
+      loop do
         return false if head.data != tail.data
         head = head.next
         tail = tail.next
-      end while head != tail && head != tail.next
+        break unless head != tail && head != tail.next
+      end
       return true
     end
   end
