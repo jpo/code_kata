@@ -60,7 +60,7 @@ module ProgrammingProblems
     # Indicates whether or not the items in the list are the same both forward
     # and backward.
     def palindrome?
-      return true if !self.head || self.head = self.next
+      return true if !self.head || self.head == self.next
       head = self.head
       tail = self.head.prev
       begin
