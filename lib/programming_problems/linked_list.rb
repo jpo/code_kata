@@ -22,7 +22,7 @@ module ProgrammingProblems
     # Removes a given node from the list.
     def remove(target)
       self.head = self.head.next if self.head == target
-      prev  = find { |item| item.next == target }
+      prev = find { |item| item.next == target }
       prev.next = prev.next.next if prev
     end
 
