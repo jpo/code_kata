@@ -48,6 +48,7 @@ module ProgrammingProblems
 
     # Finds the node at position n from the end of the list.
     def nth_from_end(n)
+      return if n < 0
       index    = self.head
       trailing = self.head
       n.times do
@@ -73,7 +74,7 @@ module ProgrammingProblems
     # Compare this list with another list. Returns a boolean indicating whether
     # or not both lists contain the same data.
     def equals?(other)
-      return true  if !self.head && other.head
+      return true  if !self.head && !other.head
       return false if !self.head || !other.head
       list1 = self.head
       list2 = other.head

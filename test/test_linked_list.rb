@@ -57,13 +57,35 @@ module ProgrammingProblems
           (1..3).each { |i| list.insert(i) }
           assert_equal 2, list.find_value(2).data
         end
+
+        it 'returns nil when value is not found' do
+          list = LinkedList.new
+          assert list.find_value(0).nil?
+        end
       end
 
       describe 'mid' do
-        it 'finds the midpoint' do
+        it 'finds the midpoint on a list with an odd number of items' do
           list = LinkedList.new
           (1..5).each { |i| list.insert(i) }
           assert_equal 3, list.mid.data
+        end
+
+        it 'finds the midpoint on a list with an even number of items' do
+          list = LinkedList.new
+          (1..4).each { |i| list.insert(i) }
+          assert_equal 2, list.mid.data
+        end
+
+        it 'returns the head when the list has one item' do
+          list = LinkedList.new
+          list.insert(1)
+          assert_equal 1, list.mid.data
+        end
+
+        it 'returns nil when the list is empty' do
+          list = LinkedList.new
+          assert list.mid.nil?
         end
       end
 
@@ -77,61 +99,177 @@ module ProgrammingProblems
             assert_equal n, list.nth_from_end(i).data
           end
         end
+        
+        it 'returns head when given index is greater than the list length' do
+          list = LinkedList.new
+          (1..5).each { |n| list.insert(n) }
+          assert_equal 5, list.nth_from_end(10).data
+        end
+
+        it 'returns nil when the list is empty' do
+          list = LinkedList.new
+          assert list.nth_from_end(5).nil?
+        end
+
+        it 'returns nil when given index is negative' do
+          list = LinkedList.new
+          (1..5).each { |n| list.insert(n) }
+          assert list.nth_from_end(-5).nil?
+        end
       end
 
       describe 'reverse!' do
-        it 'reverses the items in the list' do
+        it 'reverses the items in the list in place' do
           list = LinkedList.new
           (1..5).each { |n| list.insert(n) }
-          assert_equal [5,4,3,2,1], list.map(&:data)
+          assert_equal [5, 4, 3, 2, 1], list.map(&:data)
           list.reverse!
-          assert_equal [1,2,3,4,5], list.map(&:data)
+          assert_equal [1, 2, 3, 4, 5], list.map(&:data)
+        end
+
+        it 'changes nothing when list is empty' do
+          list = LinkedList.new
+          list.reverse!
+          assert_equal [], list.map(&:data)
+        end
+
+        it 'changes nothing when the list has one item' do
+          list = LinkedList.new
+          list.insert(1)
+          list.reverse!
+          assert_equal [1], list.map(&:data)
         end
       end
 
       describe 'equals?' do
-        it 'compares another list with itself' do
+        it 'returns true when both lists are empty' do
           list1 = LinkedList.new
           list2 = LinkedList.new
-          list3 = LinkedList.new
-          (1..5).each do |n|
+          assert list1.equals?(list2)
+          assert list2.equals?(list1)
+        end
+
+        it 'returns false when one list is empty' do
+          list1 = LinkedList.new
+          list2 = LinkedList.new
+          list1.insert(1)
+          assert !list1.equals?(list2)
+          assert !list2.equals?(list1)
+        end
+
+        it 'returns true when both lists have identical items and length' do
+          list1 = LinkedList.new
+          list2 = LinkedList.new
+          (1..3).each do |n|
             list1.insert(n)
             list2.insert(n)
           end
           assert list1.equals?(list2)
-          assert !list1.equals?(list3)
+        end
+
+        it 'returns false when lists have same length but different values' do
+          list1 = LinkedList.new
+          list2 = LinkedList.new
+          [1, 2].each { |n| list1.insert(n) }
+          [1, 3].each { |n| list2.insert(n) }
+          assert !list1.equals?(list2)
+        end
+
+        it 'returns false when lists have different lengths' do
+          list1 = LinkedList.new
+          list2 = LinkedList.new
+          (1..2).each { |n| list1.insert(n) }
+          (1..3).each { |n| list2.insert(n) }
+          assert !list1.equals?(list2)
         end
       end
 
       describe 'merge!' do
         it 'merges another list with itself' do
           list1 = LinkedList.new
-          (4..5).each { |n| list1.insert(n) }
           list2 = LinkedList.new
+          (4..5).each { |n| list1.insert(n) }
           (1..3).each { |n| list2.insert(n) }
           list1.merge!(list2)
-          assert_equal [5,4,3,2,1], list1.map(&:data)
+          assert_equal [5, 4, 3, 2, 1], list1.map(&:data)
+        end
+
+        it 'changes nothing when both lists are empty' do
+          list1 = LinkedList.new
+          list2 = LinkedList.new
+          list1.merge!(list2)
+          assert list1.head.nil?
+          assert list2.head.nil?
+        end
+
+        it 'changes nothing when given list is empty' do
+          list1 = LinkedList.new
+          list2 = LinkedList.new
+          list1.insert(1)
+          list1.merge!(list2)
+          assert_equal [1], list1.map(&:data)
+          assert_equal [], list2.map(&:data)
+        end
+
+        it 'merges given list when target list is empty' do
+          list1 = LinkedList.new
+          list2 = LinkedList.new
+          list2.insert(1)
+          list1.merge!(list2)
+          assert_equal [1], list1.map(&:data)
         end
       end
 
       describe 'palindrome?' do
-        it 'determines if the list is a palindrome' do
-          list1 = LinkedList.new
-          [1,2,1].each { |n| list1.insert(n) }
-          list2 = LinkedList.new
-          [1,2,3].each { |n| list2.insert(n) }
-          assert list1.palindrome?
-          assert !list2.palindrome?
+        it 'returns true if list is empty' do
+          list = LinkedList.new
+          assert list.palindrome?
+        end
+
+        it 'returns true if list has one item' do
+          list = LinkedList.new
+          list.insert(1)
+          assert list.palindrome?
+        end
+
+        it 'returns true if list is a palindrome' do
+          list = LinkedList.new
+          [1, 2, 1].each { |n| list.insert(n) }
+          assert list.palindrome?
+        end
+
+        it 'returns false if list is not a palindrome' do
+          list = LinkedList.new
+          [1, 2, 3].each { |n| list.insert(n) }
+          assert !list.palindrome?
         end
       end
 
       describe 'looped?' do
-        it 'detects loops' do
+        it 'returns false if list is empty' do
+          list = LinkedList.new
+          assert !list.looped?
+        end
+
+        it 'returns true if head links to itself' do
+          list = LinkedList.new
+          list.insert(1)
+          list.head.next = list.head
+          assert list.looped?
+        end
+
+        it 'returns true if an item links to a previous item' do
+          list = LinkedList.new
+          (1..3).each { |n| list.insert(n) }
+          item = list.head.next
+          list.head.next.next = list.head.next
+          assert list.looped?
+        end
+
+        it 'returns false if list has no loops' do
           list = LinkedList.new
           (1..3).each { |n| list.insert(n) }
           assert !list.looped?
-          list.head.next.next.next = list.head.next
-          assert list.looped?
         end
       end
     end
