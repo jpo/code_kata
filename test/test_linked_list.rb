@@ -261,7 +261,6 @@ module ProgrammingProblems
         it 'returns true if an item links to a previous item' do
           list = LinkedList.new
           (1..3).each { |n| list.insert(n) }
-          item = list.head.next
           list.head.next.next = list.head.next
           assert list.looped?
         end
