@@ -7,61 +7,61 @@ module ProgrammingProblems
     attr_accessor :head
 
     def each
-      item = self.head
+      item = head
       while item
         yield item
         item = item.next
-        break if item == self.head
+        break if item == head
       end
     end
 
     # Inserts a node at the beginning of the list.
     def insert(data)
-      if !self.head
+      unless head
         self.head = DoublyLinkedListNode.new(data)
-        self.head.prev = self.head.next = self.head
+        head.prev = head.next = head
         return
       end
-      node = DoublyLinkedListNode.new(data, self.head.prev, self.head)
-      self.head.prev.next = node
-      self.head.prev = node
+      node = DoublyLinkedListNode.new(data, head.prev, head)
+      head.prev.next = node
+      head.prev = node
       self.head = node
     end
 
     # Removes a given node from the list.
     def remove(target)
-      if self.head == self.head.next
+      if head == head.next
         self.head = nil
         return
       else
         target.prev.next = target.next
         target.next.prev = target.prev
-        self.head = self.head.next if self.head == target
+        self.head = head.next if head == target
       end
     end
 
     # Find and return the node in the list whose value is equal to the given
     # value.
     def find_value(value)
-      return find { |item| item.data == value }
+      find { |item| item.data == value }
     end
 
     # Reverse the items in the list in place
     def reverse!
-      return if !self.head
-      return if self.head.next == self.head
-      tail = self.head
+      return unless head
+      return if head.next == head
+      tail = head
       loop do
         tail.next, tail.prev, tail = tail.prev, tail.next, tail.next
-        break unless tail != self.head
+        break unless tail != head
       end
-      self.head = self.head.next
+      self.head = head.next
     end
 
     # Indicates whether or not the items in the list are the same both forward
     # and backward.
     def palindrome?
-      return true if !self.head || self.head == self.next
+      return true if !head || head == self.next
       head = self.head
       tail = self.head.prev
       loop do
@@ -70,7 +70,7 @@ module ProgrammingProblems
         tail = tail.next
         break unless head != tail && head != tail.next
       end
-      return true
+      true
     end
   end
 end

@@ -5,36 +5,30 @@ module ProgrammingProblems
     attr_accessor :root
 
     def initialize
-      @root = nil
+      self.root = nil
     end
 
     def insert(val)
-      @root = insert_node(@root, val)
+      self.root = insert_node(root, val)
     end
 
     def find_value(val)
-      return find_value_node(@root, val)
+      find_value_node(root, val)
     end
 
     def find_parent(target)
-      return nil if @root == target
-      node = @root
-      while (node.left != target && node.right != target)
-        if target.data < node.data
-          node = node.left
-        else
-          node = node.right
-        end
+      return if root == target
+      node = root
+      while node.left != target && node.right != target
+        node = target.data < node.data ? node.left : node.right
       end
-      return node
+      node
     end
 
     def find_successor(target)
       successor = target.right
       if successor
-        while successor.left
-          successor = successor.left
-        end
+        successor = successor.left while successor.left
         return successor
       end
       loop do
@@ -42,7 +36,7 @@ module ProgrammingProblems
         successor = find_parent(target)
         break unless successor && successor.right == target
       end
-      return successor
+      successor
     end
 
     private
@@ -54,7 +48,7 @@ module ProgrammingProblems
       else
         node.right = insert_node(node.right, val)
       end
-      return node
+      node
     end
 
     def find_value_node(node, val)

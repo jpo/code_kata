@@ -18,7 +18,7 @@ module ProgrammingProblems
 
       it 'sorts nodes on insert' do
         tree = BinaryTree.new
-        [3,1,2,4,5].each { |n| tree.insert(n) }
+        [3, 1, 2, 4, 5].each { |n| tree.insert(n) }
         assert_equal 3, tree.root.data
         assert_equal 1, tree.root.left.data
         assert_equal 2, tree.root.left.right.data

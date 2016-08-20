@@ -65,19 +65,19 @@ module ProgrammingProblems
       end
 
       describe 'mid' do
-        it 'finds the midpoint on a list with an odd number of items' do
+        it 'finds the midpoint on a list with an odd number of nodes' do
           list = LinkedList.new
           (1..5).each { |i| list.insert(i) }
           assert_equal 3, list.mid.data
         end
 
-        it 'finds the midpoint on a list with an even number of items' do
+        it 'finds the midpoint on a list with an even number of nodes' do
           list = LinkedList.new
           (1..4).each { |i| list.insert(i) }
           assert_equal 2, list.mid.data
         end
 
-        it 'returns the head when the list has one item' do
+        it 'returns the head when the list has one node' do
           list = LinkedList.new
           list.insert(1)
           assert_equal 1, list.mid.data
@@ -95,11 +95,11 @@ module ProgrammingProblems
           5.downto(1).each do |n|
             list.insert(n)
           end
-          5.downto(1).each_with_index do |n,i|
+          5.downto(1).each_with_index do |n, i|
             assert_equal n, list.nth_from_end(i).data
           end
         end
-        
+
         it 'returns head when given index is greater than the list length' do
           list = LinkedList.new
           (1..5).each { |n| list.insert(n) }
@@ -119,7 +119,7 @@ module ProgrammingProblems
       end
 
       describe 'reverse!' do
-        it 'reverses the items in the list in place' do
+        it 'reverses the nodes in the list in place' do
           list = LinkedList.new
           (1..5).each { |n| list.insert(n) }
           assert_equal [5, 4, 3, 2, 1], list.map(&:data)
@@ -133,7 +133,7 @@ module ProgrammingProblems
           assert_equal [], list.map(&:data)
         end
 
-        it 'changes nothing when the list has one item' do
+        it 'changes nothing when the list has one node' do
           list = LinkedList.new
           list.insert(1)
           list.reverse!
@@ -157,7 +157,7 @@ module ProgrammingProblems
           assert !list2.equals?(list1)
         end
 
-        it 'returns true when both lists have identical items and length' do
+        it 'returns true when both lists have identical nodes and length' do
           list1 = LinkedList.new
           list2 = LinkedList.new
           (1..3).each do |n|
@@ -226,7 +226,7 @@ module ProgrammingProblems
           assert list.palindrome?
         end
 
-        it 'returns true if list has one item' do
+        it 'returns true if list has one node' do
           list = LinkedList.new
           list.insert(1)
           assert list.palindrome?
@@ -258,7 +258,7 @@ module ProgrammingProblems
           assert list.looped?
         end
 
-        it 'returns true if an item links to a previous item' do
+        it 'returns true if a node links to a previous node' do
           list = LinkedList.new
           (1..3).each { |n| list.insert(n) }
           list.head.next.next = list.head.next

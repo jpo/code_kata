@@ -1,9 +1,10 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 # Make-like program implemented in Ruby.
 gem 'rake', '11.1.2'
 
-# Complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking.
+# Complete suite of testing facilities supporting TDD, BDD, mocking, and
+# benchmarking.
 gem 'minitest', '5.9.0'
 
 # An interface which glues ruby-debug to IDEs.
@@ -18,7 +19,8 @@ gem 'rubocop', '0.42.0'
 # A linter and static code analysis tool for Ruby.
 gem 'ruby-lint', '2.3.0'
 
-# Examines Ruby classes, modules and methods and reports any code smells it finds.
+# Examines Ruby classes, modules and methods and reports any code smells it
+# finds.
 gem 'reek', '4.2.4'
 
 # Check various places in your code that could be faster.

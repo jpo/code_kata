@@ -27,7 +27,7 @@ module ProgrammingProblems
         list = CircularLinkedList.new
         (1..3).each { |i| list.insert(i) }
         list.remove(list.find_value(3))
-        assert_equal [2,1], list.map(&:data)
+        assert_equal [2, 1], list.map(&:data)
       end
 
       it 'finds a node by value' do
