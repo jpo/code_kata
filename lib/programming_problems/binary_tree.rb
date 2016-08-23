@@ -18,24 +18,20 @@ module ProgrammingProblems
         next_data   = next_node.data
         target.data = next_data
         remove(next_node)
-        return
-      end
-      if target.left || target.right
+      elsif target.left || target.right
         temp = target.left ? target.left : target.right
         target.data  = temp.data
         target.left  = temp.left
         target.right = temp.right
-        return
-      end
-      if root == target
+      elsif root == target
         self.root = nil
-        return
-      end
-      parent = find_parent(target)
-      if parent.left == target
-        parent.left = nil
       else
-        parent.right = nil
+        parent = find_parent(target)
+        if parent.left == target
+          parent.left = nil
+        else
+          parent.right = nil
+        end
       end
     end
 
