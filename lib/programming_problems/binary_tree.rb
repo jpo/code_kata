@@ -14,15 +14,14 @@ module ProgrammingProblems
 
     def remove(target)
       if target.left && target.right
-        next_node   = find_successor(target)
-        next_data   = next_node.data
-        target.data = next_data
-        remove(next_node)
+        child       = find_successor(target)
+        target.data = child.data
+        remove(child)
       elsif target.left || target.right
-        temp = target.left ? target.left : target.right
-        target.data  = temp.data
-        target.left  = temp.left
-        target.right = temp.right
+        child        = target.left ? target.left : target.right
+        target.data  = child.data
+        target.left  = child.left
+        target.right = child.right
       elsif root == target
         self.root = nil
       else
