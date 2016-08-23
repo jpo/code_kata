@@ -8,6 +8,7 @@ module ProgrammingProblems
       self.root = nil
     end
 
+    # Inserts a node in the tree with the given value.
     def insert(val)
       self.root = insert_node(root, val)
     end
@@ -35,10 +36,13 @@ module ProgrammingProblems
       end
     end
 
+    # Find and return the node in the tree whose value is equal to the given
+    # value.
     def find_value(val)
       find_value_node(root, val)
     end
 
+    # Find and return the parent of a given node in the tree.
     def find_parent(target)
       return if root == target
       node = root
@@ -48,6 +52,7 @@ module ProgrammingProblems
       node
     end
 
+    # Find and return the successor of a given node in the tree.
     def find_successor(target)
       successor = target.right
       if successor
