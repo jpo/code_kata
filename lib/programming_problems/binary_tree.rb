@@ -12,6 +12,7 @@ module ProgrammingProblems
       self.root = insert_node(root, val)
     end
 
+    # Removes a given node from the tree.
     def remove(target)
       if target.left && target.right
         child       = find_successor(target)
