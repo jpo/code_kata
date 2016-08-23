@@ -62,6 +62,11 @@ module ProgrammingProblems
       successor
     end
 
+    # Returns the number of nodes in the tree
+    def size
+      size_node(root)
+    end
+
     private
 
     def insert_node(node, val)
@@ -81,6 +86,11 @@ module ProgrammingProblems
       else
         return find_value_node(node.right, val)
       end
+    end
+
+    def size_node(node)
+      return 0 unless node
+      1 + size_node(node.left) + size_node(node.right)
     end
   end
 end

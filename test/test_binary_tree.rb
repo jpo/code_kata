@@ -82,6 +82,19 @@ module ProgrammingProblems
         assert_equal 1, parent.data
         assert_equal 2, tree.find_successor(parent).data
       end
+
+      describe 'size' do
+        it 'is zero when tree is empty' do
+          tree = BinaryTree.new
+          assert_equal 0, tree.size
+        end
+
+        it 'counts the number of nodes in the tree' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          assert_equal 6, tree.size
+        end
+      end
     end
   end
 end
