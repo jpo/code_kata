@@ -1,7 +1,7 @@
 require 'helper'
 
 module ProgrammingProblems
-  class LinkedListTest < MiniTest::Test
+  class BinaryTreeTest < MiniTest::Test
     describe 'BinaryTree' do
       it 'initializes empty' do
         tree = BinaryTree.new
