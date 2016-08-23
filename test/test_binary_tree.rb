@@ -16,6 +16,40 @@ module ProgrammingProblems
         assert tree.root.right.nil?
       end
 
+      describe 'remove' do
+        it 'deletes and replaces target with two children' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          tree.remove(tree.root.right)
+          assert_equal 6, tree.root.right.data
+          assert_equal 4, tree.root.right.left.data
+          assert tree.root.right.right.nil?
+        end
+
+        it 'deletes and replaces target with one child' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          tree.remove(tree.root.left)
+          assert_equal 1, tree.root.left.data
+        end
+
+        it 'deletes root when it has no children' do
+          tree = BinaryTree.new
+          tree.insert(1)
+          tree.remove(tree.root)
+          assert tree.root.nil?
+        end
+
+        it 'deletes target at end of a branch' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          tree.remove(tree.root.left.left)
+          assert_equal 2, tree.root.left.data
+          assert tree.root.left.left.nil?
+          assert tree.root.left.right.nil?
+        end
+      end
+
       it 'sorts nodes on insert' do
         tree = BinaryTree.new
         [3, 1, 2, 4, 5].each { |n| tree.insert(n) }

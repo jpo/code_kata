@@ -12,6 +12,33 @@ module ProgrammingProblems
       self.root = insert_node(root, val)
     end
 
+    def remove(target)
+      if target.left && target.right
+        next_node   = find_successor(target)
+        next_data   = next_node.data
+        target.data = next_data
+        remove(next_node)
+        return
+      end
+      if target.left || target.right
+        temp = target.left ? target.left : target.right
+        target.data  = temp.data
+        target.left  = temp.left
+        target.right = temp.right
+        return
+      end
+      if root == target
+        self.root = nil
+        return
+      end
+      parent = find_parent(target)
+      if parent.left == target
+        parent.left = nil
+      else
+        parent.right = nil
+      end
+    end
+
     def find_value(val)
       find_value_node(root, val)
     end
