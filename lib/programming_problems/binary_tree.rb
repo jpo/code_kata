@@ -72,6 +72,11 @@ module ProgrammingProblems
       size_node(root)
     end
 
+    # Returns the length of the longest path
+    def depth
+      depth_node(root)
+    end
+
     private
 
     def insert_node(node, val)
@@ -96,6 +101,11 @@ module ProgrammingProblems
     def size_node(node)
       return 0 unless node
       1 + size_node(node.left) + size_node(node.right)
+    end
+
+    def depth_node(node)
+      return 0 unless node
+      1 + [depth_node(node.left), depth_node(node.right)].max
     end
   end
 end

@@ -105,6 +105,19 @@ module ProgrammingProblems
           assert_equal 6, tree.size
         end
       end
+
+      describe 'depth' do
+        it 'is zero when tree is empty' do
+          tree = BinaryTree.new
+          assert_equal 0, tree.depth
+        end
+
+        it 'counts the length of the longest path' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          assert_equal 3, tree.depth
+        end
+      end
     end
   end
 end
