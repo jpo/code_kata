@@ -77,6 +77,11 @@ module ProgrammingProblems
       depth_node(root)
     end
 
+    # Indicates whether or not the left and right nodes have the same depth.
+    def balanced?
+      balanced_node?(root)
+    end
+
     private
 
     def insert_node(node, val)
@@ -106,6 +111,12 @@ module ProgrammingProblems
     def depth_node(node)
       return 0 unless node
       1 + [depth_node(node.left), depth_node(node.right)].max
+    end
+
+    def balanced_node?(node)
+      return true unless node
+      return false unless balanced_node?(node.left) && balanced_node?(node.right)
+      (depth_node(node.right) - depth_node(node.left)).abs <= 1
     end
   end
 end

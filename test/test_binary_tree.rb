@@ -118,6 +118,25 @@ module ProgrammingProblems
           assert_equal 3, tree.depth
         end
       end
+
+      describe 'balaned?' do
+        it 'is true when tree is empty' do
+          tree = BinaryTree.new
+          assert tree.balanced?
+        end
+
+        it 'is true when depth of both sides differ by one or less' do
+          tree = BinaryTree.new
+          [3, 4, 2, 1].each { |n| tree.insert(n) }
+          assert tree.balanced?
+        end
+
+        it 'is false when one side has more depth' do
+          tree = BinaryTree.new
+          [3, 2, 1].each { |n| tree.insert(n) }
+          assert !tree.balanced?
+        end
+      end
     end
   end
 end
