@@ -65,11 +65,15 @@ module ProgrammingProblems
       end
 
       describe 'find_value' do
+        it 'is nil when value is not found' do
+          tree = BinaryTree.new
+          assert tree.find_value(3).nil?
+        end
+
         it 'finds a node by value' do
           tree = BinaryTree.new
           (1..5).each { |n| tree.insert(n) }
           assert_equal 3, tree.find_value(3).data
-          assert tree.find_value(0).nil?
         end
       end
 
