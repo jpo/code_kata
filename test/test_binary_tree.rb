@@ -78,6 +78,12 @@ module ProgrammingProblems
       end
 
       describe 'find_parent' do
+        it 'is nil when root is given' do
+          tree = BinaryTree.new
+          tree.insert(1)
+          assert tree.find_parent(tree.root).nil?
+        end
+
         it 'finds the parent of a given node' do
           tree = BinaryTree.new
           (1..5).each { |n| tree.insert(n) }
