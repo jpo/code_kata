@@ -103,6 +103,32 @@ module ProgrammingProblems
         end
       end
 
+      describe 'find_path' do
+        it 'returns full path from the root to the target' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          target = tree.find_value(4)
+          result = tree.find_path(target)
+          assert_equal [3, 5, 4], result.map(&:data)
+        end
+
+        it 'returns partial path when target does not exist' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          target = tree.find_value(4)
+          tree.remove(target)
+          result = tree.find_path(target)
+          assert_equal [3, 5], result.map(&:data)
+        end
+
+        it 'returns root when root is the target' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          result = tree.find_path(tree.root)
+          assert_equal [3], result.map(&:data)
+        end
+      end
+
       describe 'size' do
         it 'is zero when tree is empty' do
           tree = BinaryTree.new

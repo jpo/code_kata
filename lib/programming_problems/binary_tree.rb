@@ -67,6 +67,17 @@ module ProgrammingProblems
       successor
     end
 
+    # Finds the path from the root to the given node
+    def find_path(target)
+      path = []
+      node = root
+      while node && (path.empty? || path.last != target)
+        path << node
+        node = target.data < node.data ? node.left : node.right
+      end
+      path
+    end
+
     # Returns the number of nodes in the tree
     def size
       size_node(root)
