@@ -94,6 +94,13 @@ module ProgrammingProblems
       end
 
       describe 'find_successor' do
+        it 'is nil when successor does not exist' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          parent = tree.find_value(6)
+          assert tree.find_successor(parent).nil?
+        end
+
         it 'finds the successor of a given node' do
           tree = BinaryTree.new
           (1..5).each { |n| tree.insert(n) }
