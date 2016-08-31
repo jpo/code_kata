@@ -180,6 +180,17 @@ module ProgrammingProblems
           assert !tree.balanced?
         end
       end
+
+      describe 'lowest_common_ancestor' do
+        it 'finds the lowest node the has the given nodes as descendants' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          x_node = tree.find_value(4)
+          y_node = tree.find_value(6)
+          result = tree.lowest_common_ancestor(x_node, y_node)
+          assert_equal 5, result.data
+        end
+      end
     end
   end
 end

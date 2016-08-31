@@ -93,6 +93,18 @@ module ProgrammingProblems
       balanced_node?(root)
     end
 
+    # Finds the lowest common ancestor from path to root
+    def lowest_common_ancestor(x, y)
+      x_path = find_path(x)
+      y_path = find_path(y)
+      lca    = nil
+      x_path.zip(y_path) do |x_node, y_node|
+        return lca unless x_node == y_node
+        lca = x_node
+      end
+      lca
+    end
+
     private
 
     def insert_node(node, val)
