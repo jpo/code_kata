@@ -198,6 +198,11 @@ module ProgrammingProblems
           [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
           assert_equal [1, 2, 3, 4, 5, 6], tree.traverse_in_order.map(&:data)
         end
+
+        it 'is empty when tree is empty' do
+          tree = BinaryTree.new
+          assert_equal [], tree.traverse_in_order.map(&:data)
+        end
       end
     end
   end
