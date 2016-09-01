@@ -105,6 +105,12 @@ module ProgrammingProblems
       lca
     end
 
+    # Traverses the tree in each node's sort order
+    def traverse_in_order(&block)
+      return enum_for(:traverse_in_order) unless block_given?
+      traverse_in_order_node(root) { |node| yield node }
+    end
+
     private
 
     def insert_node(node, val)
@@ -140,6 +146,13 @@ module ProgrammingProblems
       return true unless node
       return false unless balanced_node?(node.left) && balanced_node?(node.right)
       (depth_node(node.right) - depth_node(node.left)).abs <= 1
+    end
+
+    def traverse_in_order_node(node, &block)
+      return unless node
+      traverse_in_order_node(node.left, &block)
+      yield node
+      traverse_in_order_node(node.right, &block)
     end
   end
 end

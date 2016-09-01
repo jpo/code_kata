@@ -191,6 +191,14 @@ module ProgrammingProblems
           assert_equal 5, result.data
         end
       end
+
+      describe 'traverse_in_order' do
+        it 'traverses tree in each nodes sort order' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          assert_equal [1, 2, 3, 4, 5, 6], tree.traverse_in_order.map(&:data)
+        end
+      end
     end
   end
 end
