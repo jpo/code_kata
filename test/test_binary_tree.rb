@@ -227,7 +227,7 @@ module ProgrammingProblems
 
         it 'is empty when tree is empty' do
           tree = BinaryTree.new
-          assert_equal [], tree.traverse_post_order.map(&:data)
+          assert_equal [], tree.traverse_pre_order.map(&:data)
         end
       end
     end
