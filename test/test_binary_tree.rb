@@ -193,7 +193,7 @@ module ProgrammingProblems
       end
 
       describe 'traverse_in_order' do
-        it 'traverses tree in each nodes sort order' do
+        it 'traverses tree and returns nodes in their sort order' do
           tree = BinaryTree.new
           [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
           assert_equal [1, 2, 3, 4, 5, 6], tree.traverse_in_order.map(&:data)
@@ -206,7 +206,7 @@ module ProgrammingProblems
       end
 
       describe 'traverse_post_order' do
-        it 'traverses tree after visiting each node' do
+        it 'traverses tree and returns deep nodes first' do
           tree = BinaryTree.new
           [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
           assert_equal [1, 2, 4, 6, 5, 3], tree.traverse_post_order.map(&:data)
@@ -219,7 +219,7 @@ module ProgrammingProblems
       end
 
       describe 'traverse_pre_order' do
-        it 'traverses tree before visiting each node' do
+        it 'traverses tree and returns shallow nodes first' do
           tree = BinaryTree.new
           [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
           assert_equal [3, 2, 1, 5, 4, 6], tree.traverse_pre_order.map(&:data)

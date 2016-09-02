@@ -105,19 +105,19 @@ module ProgrammingProblems
       lca
     end
 
-    # Traverses the tree in each node's sort order
+    # Traverses the tree, evaluating each node in its sort order
     def traverse_in_order(&block)
       return enum_for(:traverse_in_order) unless block_given?
       traverse_in_order_node(root) { |node| yield node }
     end
 
-    # Traverses the tree after visiting each node
+    # Traverses the tree, evaluating each node after visiting its children
     def traverse_post_order(&block)
       return enum_for(:traverse_post_order) unless block_given?
       traverse_post_order_node(root) { |node| yield node }
     end
 
-    # Traverses the tree before visiting each node
+    # Traverses the tree, evaluating each node before visiting its children
     def traverse_pre_order(&block)
       return enum_for(:traverse_pre_order) unless block_given?
       traverse_pre_order_node(root) { |node| yield node }
