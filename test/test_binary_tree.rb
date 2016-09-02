@@ -204,6 +204,19 @@ module ProgrammingProblems
           assert_equal [], tree.traverse_in_order.map(&:data)
         end
       end
+
+      describe 'traverse_post_order' do
+        it 'traverses tree after visiting each node' do
+          tree = BinaryTree.new
+          [3, 2, 5, 1, 4, 6].each { |n| tree.insert(n) }
+          assert_equal [1, 2, 4, 6, 5, 3], tree.traverse_post_order.map(&:data)
+        end
+
+        it 'is empty when tree is empty' do
+          tree = BinaryTree.new
+          assert_equal [], tree.traverse_post_order.map(&:data)
+        end
+      end
     end
   end
 end

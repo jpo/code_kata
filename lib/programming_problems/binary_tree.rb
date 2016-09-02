@@ -111,6 +111,12 @@ module ProgrammingProblems
       traverse_in_order_node(root) { |node| yield node }
     end
 
+    # Traverses the tree after visiting each node
+    def traverse_post_order(&block)
+      return enum_for(:traverse_post_order) unless block_given?
+      traverse_post_order_node(root) { |node| yield node }
+    end
+
     private
 
     def insert_node(node, val)
@@ -153,6 +159,13 @@ module ProgrammingProblems
       traverse_in_order_node(node.left, &block)
       yield node
       traverse_in_order_node(node.right, &block)
+    end
+
+    def traverse_post_order_node(node, &block)
+      return unless node
+      traverse_post_order_node(node.left, &block)
+      traverse_post_order_node(node.right, &block)
+      yield node
     end
   end
 end
