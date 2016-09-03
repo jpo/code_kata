@@ -1,6 +1,6 @@
 require 'helper'
 
-module ProgrammingProblems
+module CodeKata
   class BinaryTreeTest < MiniTest::Test
     describe 'BinaryTree' do
       describe 'initialize' do

@@ -1,4 +1,4 @@
-module ProgrammingProblems
+module CodeKata
   class BinaryTreeNode
     attr_accessor :data, :left, :right
 

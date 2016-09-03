@@ -1,6 +1,6 @@
-require 'programming_problems/binary_tree_node'
+require 'code_kata/binary_tree_node'
 
-module ProgrammingProblems
+module CodeKata
   class BinaryTree
     attr_accessor :root
 

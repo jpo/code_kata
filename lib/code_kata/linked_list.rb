@@ -1,6 +1,6 @@
-require 'programming_problems/linked_list_node'
+require 'code_kata/linked_list_node'
 
-module ProgrammingProblems
+module CodeKata
   class LinkedList
     include Enumerable
 

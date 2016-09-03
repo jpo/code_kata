@@ -1,6 +1,6 @@
 require 'helper'
 
-module ProgrammingProblems
+module CodeKata
   class DoublyLinkedListTest < MiniTest::Test
     describe 'DoublyLinkedList' do
       it 'initializes empty' do

@@ -1,4 +1,4 @@
-module ProgrammingProblems
+module CodeKata
   class LinkedListNode
     attr_accessor :data
     attr_accessor :next

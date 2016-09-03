@@ -1,6 +1,6 @@
-require 'programming_problems/doubly_linked_list_node'
+require 'code_kata/doubly_linked_list_node'
 
-module ProgrammingProblems
+module CodeKata
   class DoublyLinkedList
     include Enumerable
 

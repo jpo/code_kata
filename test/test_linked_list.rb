@@ -1,6 +1,6 @@
 require 'helper'
 
-module ProgrammingProblems
+module CodeKata
   class LinkedListTest < MiniTest::Test
     describe 'LinkedList' do
       describe 'initialize' do

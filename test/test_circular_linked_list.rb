@@ -1,6 +1,6 @@
 require 'helper'
 
-module ProgrammingProblems
+module CodeKata
   class CircularLinkedListTest < MiniTest::Test
     describe 'CircularLinkedList' do
       it 'initializes empty' do

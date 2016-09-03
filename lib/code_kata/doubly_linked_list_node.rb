@@ -1,4 +1,4 @@
-module ProgrammingProblems
+module CodeKata
   class DoublyLinkedListNode
     attr_accessor :data
     attr_accessor :prev
