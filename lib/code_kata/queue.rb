@@ -2,6 +2,10 @@ require 'code_kata/queue_node'
 
 module CodeKata
   class Queue
+    def initialize
+      @head = @tail = nil
+    end
+
     def push(data)
       if @tail
         @tail.next = QueueNode.new(data)
