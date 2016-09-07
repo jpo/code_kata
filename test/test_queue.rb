@@ -35,8 +35,6 @@ module CodeKata
           1.upto(3) { |n| queue.push(n) }
           1.upto(3) { |n| assert_equal n, queue.pop }
         end
-
-        # TODO: Add test for RuntimeError exception
       end
 
       describe 'empty' do
