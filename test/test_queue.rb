@@ -19,6 +19,11 @@ module CodeKata
       end
 
       describe 'pop' do
+        it 'raises a RuntimeError when the queue is empty' do
+          queue = Queue.new
+          assert_raises(RuntimeError) { queue.pop } 
+        end
+
         it 'returns the oldest node in the queue' do
           queue = Queue.new
           1.upto(3) { |n| queue.push(n) }
