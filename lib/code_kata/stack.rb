@@ -6,6 +6,10 @@ module CodeKata
       @list = LinkedList.new
     end
 
+    def push(data)
+      @list.insert(data)
+    end
+
     def empty?
       @list.head.nil?
     end
