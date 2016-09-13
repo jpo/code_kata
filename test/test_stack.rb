@@ -12,7 +12,7 @@ module CodeKata
       end
 
       describe 'push' do
-        it 'pushs a node onto the queue' do
+        it 'pushs a node onto the stack' do
           stack = Stack.new
           stack.push(1)
           assert !stack.empty?
