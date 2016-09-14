@@ -17,6 +17,11 @@ module CodeKata
       result
     end
 
+    def peek
+      raise 'No items in stack' unless @list.head
+      @list.head.data
+    end
+
     def empty?
       @list.head.nil?
     end
