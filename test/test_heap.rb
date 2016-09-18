@@ -9,6 +9,11 @@ module CodeKata
           heap = Heap.new([])
           assert_equal 0, heap.size
         end
+
+        it 'initializes with an array of items' do
+          heap = Heap.new([1, 2, 3])
+          assert_equal 3, heap.size
+        end
       end
 
       describe 'size' do
