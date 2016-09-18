@@ -16,6 +16,20 @@ module CodeKata
         end
       end
 
+      describe '[]' do
+        it 'retrieves an item from the heap at a given index' do
+          heap = Heap.new([3, 1, 2])
+          [3, 1, 2].each_with_index do |n, i|
+            assert_equal n, heap[i]
+          end
+        end
+
+        it 'is nil when an item with the given index does not exist' do
+          heap = Heap.new([])
+          assert heap[3].nil?
+        end
+      end
+
       describe 'size' do
         it 'is zero when the heap is empty' do
           heap = Heap.new([])
