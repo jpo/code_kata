@@ -30,6 +30,31 @@ module CodeKata
         end
       end
 
+      describe '[]=' do
+        it 'inserts an item in the heap at the given index' do
+          heap = Heap.new([])
+          heap[0] = 1
+          assert_equal 1, heap.size
+          assert_equal 1, heap[0]
+        end
+
+        it 'inserts nil items when the index is greater than the heap size' do
+          heap = Heap.new([])
+          heap[2] = 1
+          assert_equal 3, heap.size
+          [nil, nil, 1].each_with_index do |n, i|
+            assert_equal n, heap[i]
+          end
+        end
+
+        it 'updates an item in the heap at the given index' do
+          heap = Heap.new([4])
+          heap[0] = 1
+          assert_equal 1, heap.size
+          assert_equal 1, heap[0]
+        end
+      end
+
       describe 'size' do
         it 'is zero when the heap is empty' do
           heap = Heap.new([])
