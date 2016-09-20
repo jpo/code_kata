@@ -55,6 +55,20 @@ module CodeKata
         end
       end
 
+      describe 'insert' do
+        it 'inserts an item into an empty heap' do
+          heap = Heap.new([])
+          heap.insert(1)
+          assert_equal 1, heap.size
+        end
+
+        it 'inserts an item into an non-empty heap' do
+          heap = Heap.new([1,2,3])
+          heap.insert(4)
+          assert_equal 4, heap.size
+        end
+      end
+
       describe 'size' do
         it 'is zero when the heap is empty' do
           heap = Heap.new([])

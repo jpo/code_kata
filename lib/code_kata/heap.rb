@@ -23,6 +23,17 @@ module CodeKata
       @array[index] = value
     end
 
+    def insert(value)
+      @array << value
+      index  = @array.size - 1
+      parent = parent_index(index)
+      while index.nonzero? && compare(index, parent)
+        @array[index], @array[parent] = @array[parent], @array[index]
+        index  = parent
+        parent = parent_index(index)
+      end
+    end
+
     def size
       @array.size
     end
