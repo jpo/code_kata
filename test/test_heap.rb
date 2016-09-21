@@ -80,6 +80,18 @@ module CodeKata
           assert_equal 3, heap.size
         end
       end
+
+      describe 'find_first' do
+        it 'finds the max item in the heap' do
+          heap = Heap.new([1, 4, 9, 7])
+          assert_equal 9, heap.find_first
+        end
+
+        it 'is nil when the heap is empty' do
+          heap = Heap.new([])
+          assert heap.find_first.nil?
+        end
+      end
     end
   end
 end

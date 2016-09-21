@@ -38,6 +38,10 @@ module CodeKata
       @array.size
     end
 
+    def find_first
+      @array[0]
+    end
+
     private
 
     def compare(lhs, rhs)
