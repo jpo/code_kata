@@ -42,6 +42,21 @@ module CodeKata
       @array[0]
     end
 
+    def remove_first
+      @array[0] = @array[-1]
+      @array.pop
+      index = 0
+      while index < @array.size
+        child = lchild_index(index)
+        break if child >= @array.size
+        right = rchild_index(index)
+        child = right if right < @array.size && compare(right, child)
+        break if compare(index, child)
+        @array[index], @array[child] = @array[child], @array[index]
+        index = child
+      end
+    end
+
     private
 
     def compare(lhs, rhs)

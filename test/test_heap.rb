@@ -92,6 +92,14 @@ module CodeKata
           assert heap.find_first.nil?
         end
       end
+
+      describe 'remove_first' do
+        it 'removes the max item in the heap' do
+          heap = Heap.new([1, 4, 9, 7])
+          heap.remove_first
+          assert_equal 3, heap.size
+        end
+      end
     end
   end
 end
