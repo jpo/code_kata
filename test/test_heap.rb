@@ -99,6 +99,12 @@ module CodeKata
           heap.remove_first
           assert_equal 3, heap.size
         end
+
+        it 'does nothing when the heap is empty' do
+          heap = Heap.new([])
+          heap.remove_first
+          assert_equal 0, heap.size
+        end
       end
     end
   end
