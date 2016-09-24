@@ -106,6 +106,16 @@ module CodeKata
           assert_equal 0, heap.size
         end
       end
+
+      describe 'increase_key' do
+        it 'increases the value at a given index' do
+          heap = Heap.new([1, 4, 9, 7])
+          heap.increase_key(1)
+          [9, 8, 4, 1].each_with_index do |n, i| 
+            assert_equal n, heap[i]
+          end
+        end
+      end
     end
   end
 end

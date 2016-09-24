@@ -57,6 +57,16 @@ module CodeKata
       end
     end
 
+    def increase_key(index)
+      @array[index] += 1
+      parent = parent_index(index)
+      until index.zero? || compare(parent, index)
+        @array[index], @array[parent] = @array[parent], @array[index]
+        index  = parent_index(index)
+        parent = parent_index(index)
+      end
+    end
+
     private
 
     def compare(lhs, rhs)
