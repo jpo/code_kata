@@ -67,6 +67,27 @@ module CodeKata
       end
     end
 
+    def enumerate_powers(set, num_powers)
+      out   = []
+      array = []
+      value = 0
+      set.each { |i| array << [1, i] }
+      heap = Heap.new(array, proc { |lhs, rhs|
+        next lhs[0] < rhs[0] || (!(lhs[0] > rhs[0]) && lhs[1] < rhs[1])
+      })
+      until num_powers.zero? || heap.size.zero?
+        entry = heap.find_first
+        heap.remove_first
+        until value == entry[0] 
+          value = entry[0]
+          out << value
+          num_powers -= 1
+        end
+        heap.insert([entry[0] * entry[1], entry[1]])
+      end
+      out
+    end
+
     private
 
     def compare(lhs, rhs)

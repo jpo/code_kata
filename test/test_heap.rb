@@ -111,9 +111,16 @@ module CodeKata
         it 'increases the value at a given index' do
           heap = Heap.new([1, 4, 9, 7])
           heap.increase_key(1)
-          [9, 8, 4, 1].each_with_index do |n, i| 
+          [9, 8, 4, 1].each_with_index do |n, i|
             assert_equal n, heap[i]
           end
+        end
+      end
+
+      describe 'enumerate_powers' do
+        it 'enumerates powers of an initial set of non-negative integers' do
+          heap = Heap.new([])
+          assert_equal [1, 2, 3, 4, 8, 9], heap.enumerate_powers([2, 3, 4], 6)
         end
       end
     end
