@@ -123,6 +123,13 @@ module CodeKata
           assert_equal [1, 2, 3, 4, 8, 9], heap.enumerate_powers([2, 3, 4], 6)
         end
       end
+
+      describe 'find_top_k' do
+        it 'finds top k elements in a stream' do
+          heap = Heap.new([])
+          assert_equal [4, 6], heap.find_top_k([2, 4, 6], 2)
+        end
+      end
     end
   end
 end

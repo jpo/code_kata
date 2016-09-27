@@ -88,6 +88,19 @@ module CodeKata
       out
     end
 
+    def find_top_k(stream, k)
+      heap = Heap.new([], proc { |lhs, rhs| next lhs < rhs })
+      stream.each do |value|
+        if heap.size < k
+          heap.insert(value)
+        elsif value > heap.find_first
+          heap.remove_first
+          heap.insert(value)
+        end
+      end
+      heap.array
+    end
+
     private
 
     def compare(lhs, rhs)
