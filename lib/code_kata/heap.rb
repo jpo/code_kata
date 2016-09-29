@@ -1,4 +1,5 @@
 module CodeKata
+  # Represents a simple binary heap composed of a single binary tree structure.
   class Heap
     attr_accessor :array
 
@@ -15,14 +16,17 @@ module CodeKata
       end
     end
 
+    # Returns the value at index.
     def [](index)
       @array[index]
     end
 
+    # Sets the element at index.
     def []=(index, value)
       @array[index] = value
     end
 
+    # Inserts a new value into the heap.
     def insert(value)
       @array << value
       index  = @array.size - 1
@@ -34,14 +38,17 @@ module CodeKata
       end
     end
 
+    # Returns the number of elements in the heap.
     def size
       @array.size
     end
 
+    # Finds the maximum (or first) element in the heap.
     def find_first
       @array[0]
     end
 
+    # Removes the maximum (or first) element from the heap.
     def remove_first
       @array[0] = @array[-1]
       @array.pop
@@ -57,6 +64,8 @@ module CodeKata
       end
     end
 
+    # Increase the value at the given index while also ensuring the that heap
+    # property continues to be met.
     def increase_key(index)
       @array[index] += 1
       parent = parent_index(index)
@@ -67,6 +76,8 @@ module CodeKata
       end
     end
 
+    # Lists the powers of the given set of integers in increasing order without
+    # duplicates.
     def enumerate_powers(set, num_powers)
       out   = []
       array = []
@@ -78,7 +89,7 @@ module CodeKata
       until num_powers.zero? || heap.size.zero?
         entry = heap.find_first
         heap.remove_first
-        until value == entry[0] 
+        until value == entry[0]
           value = entry[0]
           out << value
           num_powers -= 1
@@ -88,6 +99,7 @@ module CodeKata
       out
     end
 
+    # Identifies and returns the top k elements in a data stream.
     def find_top_k(stream, k)
       heap = Heap.new([], proc { |lhs, rhs| next lhs < rhs })
       stream.each do |value|
